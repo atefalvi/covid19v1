@@ -1,4 +1,6 @@
 import base64
+import datetime
+
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
@@ -9,8 +11,6 @@ import pandas as pd
 import plotly.graph_objs as go
 import requests
 from bs4 import BeautifulSoup
-import datetime
-
 
 # Loading Data
 url = 'https://www.worldometers.info/coronavirus/#countries'
@@ -254,7 +254,11 @@ app.layout = html.Div([html.Div([html.H1(children='Covid 19 Dashboard', style={'
                                                                       )], className='card text-white bg-secondary'
                                                                       )], className='card-deck', style={'margin': 30}
                                                    )]
-                                )
+                                ),
+                       ### Footer
+                       html.Div(id='footer',
+                                children=html.P(id='footer-notes', children='Dashboard designed by Syed Atef Alvi'),
+                                style={'testAlign': 'center'})
                        ],
                       style={'margin': 15})
 
