@@ -30,7 +30,7 @@ np_array = np.array(data)
 columns=['country', 'total_cases', 'new_cases', 'total_deaths', 'new_deaths', 'total_recovered',
          'active_cases', 'serious_critical', '1M_total_case', '1M_death', 'total_tests', '1M_test', 'population', 'continent']
 
-df = pd.DataFrame(data=np_array[1:,1:], index=np_array[1:,0])
+df = pd.DataFrame(data=np_array[1:, 1:16], index=np_array[1:, 0])
 df.columns = columns
 
 #df.reset_index(drop=True, inplace=True)
