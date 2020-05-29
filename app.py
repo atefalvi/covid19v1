@@ -27,10 +27,11 @@ for tr in tr_elems: # Loop through rows
 
 np_array = np.array(data)
 
-columns=['country', 'total_cases', 'new_cases', 'total_deaths', 'new_deaths', 'total_recovered',
+columns = ['country', 'total_cases', 'new_cases', 'total_deaths', 'new_deaths', 'total_recovered', 'new_recovered',
          'active_cases', 'serious_critical', '1M_total_case', '1M_death', 'total_tests', '1M_test', 'population', 'continent']
 
 df = pd.DataFrame(data=np_array[1:, 1:16], index=np_array[1:, 0])
+
 df.columns = columns
 
 #df.reset_index(drop=True, inplace=True)
@@ -38,11 +39,10 @@ dfclean = df[(df['country'] != df['continent'])
              & (df['country'] != 'Oceania')
              & (df['country']!='')]
 
-dfclean.iloc[:, 1:13] = dfclean.iloc[:, 1:13].replace('[\D^.]', '', regex=True)
-dfclean.iloc[:,1:13] = dfclean.iloc[:,1:13].replace('',0)
+dfclean.iloc[:, 1:14] = dfclean.iloc[:, 1:14].replace('[\D^.]', '', regex=True)
+dfclean.iloc[:, 1:14] = dfclean.iloc[:, 1:14].replace('', 0)
 
-
-dfclean.iloc[:, 1:13] = dfclean.iloc[:, 1:13].astype('float')
+dfclean.iloc[:, 1:14] = dfclean.iloc[:, 1:14].astype('float')
 
 # Setting up the display
 pd.set_option('display.float_format', lambda x: '%.0f' % x)
